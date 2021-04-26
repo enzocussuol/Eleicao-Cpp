@@ -1,9 +1,10 @@
 #include <iostream>
+#include "politico.h"
 
 using namespace std;
 
-int main(){
-    cout << "Hello World!\n";
+int main(int argc, char* argv[]){
+    
 
     return 0;
 }
