@@ -13,10 +13,7 @@
         string nome;
         string nomeUrna;
         char sexo;
-        //data
+        // Data
         int partido;
-
-        public:
-        
     };
 #endif

@@ -3,6 +3,8 @@
 
     #include <iostream>
     #include <string>
+    #include <map>
+    #include <list>
     #include "politico.h"
     #include "partido.h"
     
@@ -10,7 +12,7 @@
 
     class Leitura{
         public:
-        void lePartidos();
-        void lePoliticos();
+            map<int, Partido*> lePartidos(string);
+            list<Politico*> lePoliticos(string);
     };
 #endif

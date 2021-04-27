@@ -14,11 +14,8 @@
         int numEleitos;
         string nome;
         string sigla;
-        list<Politico> politicos;
+        list<Politico*> politicos;
         Politico primeiroColocado;
         Politico ultimoColocado;
-
-        public:
-
     };
 #endif
