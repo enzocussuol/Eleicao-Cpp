@@ -12,5 +12,7 @@ int main(int argc, char* argv[]){
 
     Eleicao* eleicao = new Eleicao(leitura->lePartidos(argv[1]), leitura->lePoliticos(argv[2]));
 
+    geraRelatorios(eleicao);
+
     return 0;
 }
