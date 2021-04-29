@@ -18,6 +18,6 @@
             Eleicao(map<int, Partido*>, list<Politico*>);
     };
 
-    geraRelatorios(Eleicao* eleicao);
+    //geraRelatorios(Eleicao* eleicao);
 
 #endif

@@ -9,32 +9,39 @@ map<int, Partido*> Leitura::lePartidos(string arquivo){
 }
 
 list<Politico*> Leitura::lePoliticos(string arquivo){
+    cout << arquivo << endl;
+
     list<Politico*> novaLista;
 
-    fstream fin;
-    fin.open(arquivo, ios::in);
+    ifstream arquivoPoliticos(arquivo);
     
-    vector<string> row;
-    string line, word, temp;
+    vector<string> vetpalavras;
+    string linha, palavra, temp;
     
     int i = 0;
 
-    while(fin >> temp){
-        row.clear();
+    getline(arquivoPoliticos, linha); //retirar lixo 
+    while(getline(arquivoPoliticos, linha)){
+        stringstream aux(linha);
+        //cout << i << endl;
+        vetpalavras.clear();
 
-        getline(fin, line);
-        stringstream s(line);
-        while(getline(s, word, ', ')){
-            row.push_back(word);
+        //cout << linha << endl;
+
+        while(getline(aux, palavra, ',')){
+            vetpalavras.push_back(palavra);
+            //cout << palavra << endl;
         }
-        cout << row[0];
-        //novaLista[i] inserir
+
+        //Politico* novoPolitico = new Politico(vetpalavras);
+        Politico* novoPolitico = new Politico(stoi(vetpalavras[0]), stoi(vetpalavras[1]),vetpalavras[2],vetpalavras[3],vetpalavras[4],vetpalavras[5].at(0),vetpalavras[6],vetpalavras[7], stoi(vetpalavras[8]));
+        //novoPolitico->imprimePolitico();
         
+        novaLista.push_back(novoPolitico);
         i++;
     }
 
-
-    cout << "Ainda irei implementar a leitura dos politicos" << endl;
+    //cout << "Ainda irei implementar a leitura dos politicos" << endl;
 
     return novaLista;
 }

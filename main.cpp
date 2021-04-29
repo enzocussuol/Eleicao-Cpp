@@ -9,10 +9,18 @@ using namespace std;
 int main(int argc, char* argv[]){
     Leitura* leitura;
     Saida* saida;
+    
+    list<Politico*> politicos = leitura->lePoliticos(argv[1]);
 
-    Eleicao* eleicao = new Eleicao(leitura->lePartidos(argv[1]), leitura->lePoliticos(argv[2]));
+    politicos.sort(comparePoliticoVotos);
 
-    geraRelatorios(eleicao);
+
+    for(auto it = politicos.begin(); it != politicos.end(); ++it){
+        (*it)->imprimePolitico();
+    }
+    //Eleicao* eleicao = new Eleicao(leitura->lePartidos(argv[1]), leitura->lePoliticos(argv[2]));
+
+    //geraRelatorios(eleicao);
 
     return 0;
 }

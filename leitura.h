@@ -2,6 +2,8 @@
     #define LEITURA_H_
 
     #include <iostream>
+    #include <fstream>
+    #include <sstream>
     #include <string>
     #include <map>
     #include <list>
