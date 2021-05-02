@@ -4,6 +4,7 @@
     #include <iostream>
     #include <string>
     #include <vector>
+
     using namespace std;
 
     class Politico{
@@ -29,7 +30,6 @@
                     const string data,
                     const string &destinoVoto,
                     const int partido);
-            
             int getNumero() const;
             int getVotosNominais() const;
             string getSituacao() const;
@@ -41,6 +41,7 @@
             int getPartido() const;
     
             void imprimePolitico() const;
+            void libera();
     };
     
     bool comparePoliticoVotos(const Politico* first, const Politico* second);

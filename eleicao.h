@@ -16,8 +16,6 @@
 
         public:
             Eleicao(map<int, Partido*>, list<Politico*>);
+            void libera();
     };
-
-    //geraRelatorios(Eleicao* eleicao);
-
 #endif

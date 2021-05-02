@@ -9,20 +9,13 @@ using namespace std;
 int main(int argc, char* argv[]){
     Leitura* leitura;
     Saida* saida;
-
-    cout << teste << endl;
     
-    list<Politico*> politicos = leitura->lePoliticos(argv[1]);
+    map<int, Partido*> partidos = leitura->lePartidos(argv[2]);
+    list<Politico*> politicos = leitura->lePoliticos(partidos, argv[1]);
 
-    politicos.sort(comparePoliticoVotos);
+    Eleicao* eleicao = new Eleicao(partidos, politicos);
 
-
-    for(auto it = politicos.begin(); it != politicos.end(); ++it){
-        (*it)->imprimePolitico();
-    }
-    //Eleicao* eleicao = new Eleicao(leitura->lePartidos(argv[1]), leitura->lePoliticos(argv[2]));
-
-    //geraRelatorios(eleicao);
+    eleicao->libera();
 
     return 0;
 }

@@ -15,6 +15,6 @@
     class Leitura{
         public:
             map<int, Partido*> lePartidos(string);
-            list<Politico*> lePoliticos(string);
+            list<Politico*> lePoliticos(map<int, Partido*>, string);
     };
 #endif

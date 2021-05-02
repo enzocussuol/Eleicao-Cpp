@@ -3,45 +3,55 @@
 map<int, Partido*> Leitura::lePartidos(string arquivo){
     map<int, Partido*> novoMapa;
 
-    cout << "Ainda irei implementar a leitura dos partidos" << endl;
+    ifstream arquivoPartidos(arquivo);
+
+    vector<string> vetPalavras;
+    string linha, palavra;
+    
+    getline(arquivoPartidos, linha);
+    while(getline(arquivoPartidos, linha)){
+        stringstream aux(linha);
+        vetPalavras.clear();
+
+        while(getline(aux, palavra, ',')){
+            vetPalavras.push_back(palavra);
+        }
+
+        Partido* novoPartido = new Partido(stoi(vetPalavras[0]), stoi(vetPalavras[1]), vetPalavras[2], vetPalavras[3]);
+
+        novoMapa.insert({novoPartido->getNumero(), novoPartido});
+    }
 
     return novoMapa;
 }
 
-list<Politico*> Leitura::lePoliticos(string arquivo){
-    cout << arquivo << endl;
-
+list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string arquivo){
     list<Politico*> novaLista;
 
     ifstream arquivoPoliticos(arquivo);
     
-    vector<string> vetpalavras;
-    string linha, palavra, temp;
+    vector<string> vetPalavras;
+    string linha, palavra;
     
-    int i = 0;
-
-    getline(arquivoPoliticos, linha); //retirar lixo 
+    getline(arquivoPoliticos, linha);
     while(getline(arquivoPoliticos, linha)){
         stringstream aux(linha);
-        //cout << i << endl;
-        vetpalavras.clear();
-
-        //cout << linha << endl;
+        vetPalavras.clear();
 
         while(getline(aux, palavra, ',')){
-            vetpalavras.push_back(palavra);
-            //cout << palavra << endl;
+            vetPalavras.push_back(palavra);
         }
 
-        //Politico* novoPolitico = new Politico(vetpalavras);
-        Politico* novoPolitico = new Politico(stoi(vetpalavras[0]), stoi(vetpalavras[1]),vetpalavras[2],vetpalavras[3],vetpalavras[4],vetpalavras[5].at(0),vetpalavras[6],vetpalavras[7], stoi(vetpalavras[8]));
-        //novoPolitico->imprimePolitico();
-        
+        Politico* novoPolitico = new Politico(stoi(vetPalavras[0]), stoi(vetPalavras[1]),
+                                                vetPalavras[2],vetPalavras[3],
+                                                vetPalavras[4],vetPalavras[5].at(0),
+                                                vetPalavras[6],vetPalavras[7], 
+                                                stoi(vetPalavras[8]));
         novaLista.push_back(novoPolitico);
-        i++;
-    }
 
-    //cout << "Ainda irei implementar a leitura dos politicos" << endl;
+        Partido* partido = partidos.find(novoPolitico->getPartido())->second;
+        partido->adicionaPolitico(novoPolitico);
+    }
 
     return novaLista;
 }
