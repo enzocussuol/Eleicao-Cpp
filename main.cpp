@@ -9,6 +9,8 @@ using namespace std;
 int main(int argc, char* argv[]){
     Leitura* leitura;
     Saida* saida;
+
+    cout << teste << endl;
     
     list<Politico*> politicos = leitura->lePoliticos(argv[1]);
 
