@@ -40,12 +40,10 @@ void Partido::adicionaPolitico(Politico* politico){
 }
 
 void Partido::imprimePartido(){
-    cout << this->nome << endl;
-    cout << "Politicos desse partido:" << endl;
-
-    for(auto it = this->politicos.begin(); it != this->politicos.end(); ++it){
-        (*it)->imprimePolitico();
-    }
+    cout << this->numero << ",";
+    cout << this->votosLegenda << ",";
+    cout << this->nome << ",";
+    cout << this->sigla << endl;
 }
 
 void Partido::libera(){

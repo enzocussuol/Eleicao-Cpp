@@ -1,6 +1,8 @@
 #ifndef PARTIDO_H_
     #define PARTIDO_H_
 
+    class Partido;
+
     #include <iostream>
     #include <string>
     #include <list>

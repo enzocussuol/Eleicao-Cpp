@@ -9,11 +9,27 @@ using namespace std;
 int main(int argc, char* argv[]){
     Leitura* leitura;
     Saida* saida;
-    
-    map<int, Partido*> partidos = leitura->lePartidos(argv[2]);
-    list<Politico*> politicos = leitura->lePoliticos(partidos, argv[1]);
 
-    Eleicao* eleicao = new Eleicao(partidos, politicos);
+    Eleicao* eleicao = new Eleicao(leitura, argv);
+
+    // map<int, Partido*> partidos = eleicao->getPartidos();
+    // list<Politico*> politicos = eleicao->getPoliticos();
+
+    // for(auto it = partidos.begin(); it != partidos.end(); ++it){
+    //     it->second->imprimePartido();
+    // }
+
+    // cout << "===================================================" << endl;
+
+    // for(auto it = politicos.begin(); it != politicos.end(); ++it){
+    //     (*it)->imprimePoliticoOriginal();
+    // }
+
+    eleicao->ordenaPoliticos();
+
+    eleicao->setNumVagas();
+
+    eleicao->geraRelatorios(saida);
 
     eleicao->libera();
 

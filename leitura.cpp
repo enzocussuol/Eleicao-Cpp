@@ -42,15 +42,17 @@ list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string arquivo
             vetPalavras.push_back(palavra);
         }
 
-        Politico* novoPolitico = new Politico(stoi(vetPalavras[0]), stoi(vetPalavras[1]),
+        if(vetPalavras[7].compare("Válido") == 0){
+            Politico* novoPolitico = new Politico(stoi(vetPalavras[0]), stoi(vetPalavras[1]),
                                                 vetPalavras[2],vetPalavras[3],
                                                 vetPalavras[4],vetPalavras[5].at(0),
                                                 vetPalavras[6],vetPalavras[7], 
                                                 stoi(vetPalavras[8]));
-        novaLista.push_back(novoPolitico);
+            novaLista.push_back(novoPolitico);
 
-        Partido* partido = partidos.find(novoPolitico->getPartido())->second;
-        partido->adicionaPolitico(novoPolitico);
+            Partido* partido = partidos.find(novoPolitico->getPartido())->second;
+            partido->adicionaPolitico(novoPolitico);
+        }
     }
 
     return novaLista;

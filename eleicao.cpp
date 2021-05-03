@@ -1,8 +1,41 @@
 #include "eleicao.h"
 
-Eleicao::Eleicao(map<int, Partido*> partidos, list<Politico*> politicos){
-    this->partidos = partidos;
-    this->politicos = politicos;
+Eleicao::Eleicao(Leitura* leitura, char** argv){
+    this->partidos = leitura->lePartidos(argv[2]);
+    this->politicos = leitura->lePoliticos(partidos, argv[1]);
+}
+
+map<int, Partido*> Eleicao::getPartidos() const{
+    return this->partidos;
+}
+
+list<Politico*> Eleicao::getPoliticos() const{
+    return this->politicos;
+}
+
+void Eleicao::setNumVagas(){
+    int numVagas = 0;
+
+    for(auto it = this->politicos.begin(); it != this->politicos.end(); ++it){
+        if((*it)->getSituacao().compare("Eleito") == 0){
+            numVagas++;
+        }
+    }
+
+    this->numVagas = numVagas;
+}
+
+int Eleicao::getNumVagas() const{
+    return this->numVagas;
+}
+
+void Eleicao::ordenaPoliticos(){
+    this->politicos.sort(cmpVotosNominais);
+}
+
+void Eleicao::geraRelatorios(Saida* saida){
+    saida->geraRelatorio1(this->numVagas);
+    saida->geraRelatorio2(this->politicos, this->partidos, this->numVagas);
 }
 
 void Eleicao::libera(){

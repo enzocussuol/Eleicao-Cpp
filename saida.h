@@ -11,6 +11,8 @@
     using namespace std;
 
     class Saida{
-        
+        public:
+            void geraRelatorio1(int);
+            void geraRelatorio2(list<Politico*>, map<int, Partido*>, int);
     };
 #endif

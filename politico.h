@@ -1,9 +1,13 @@
 #ifndef POLITICO_H_
     #define POLITICO_H_
 
+    class Politico;
+
     #include <iostream>
     #include <string>
     #include <vector>
+    #include <map>
+    #include "partido.h"
 
     using namespace std;
 
@@ -39,12 +43,10 @@
             // struct getData() const;
             string getDestinoVoto() const;
             int getPartido() const;
-    
-            void imprimePolitico() const;
+            void imprimePoliticoOriginal() const;
+            void imprimePolitico(map<int, Partido*>) const;
             void libera();
     };
-    
-    bool comparePoliticoVotos(const Politico* first, const Politico* second);
-    bool comparePoliticoPartido(const Politico* first, const Politico* second);
 
+    bool cmpVotosNominais(Politico*, Politico*);
 #endif
