@@ -1,5 +1,31 @@
 #include "leitura.h"
 
+
+int Leitura::calculaIdade(string dataeleicao, string datanasc){
+    string aux;
+
+    vector<int> veteleicao;
+    stringstream elect(dataeleicao);
+    while(getline(elect, aux, '/')){
+        veteleicao.push_back(stoi(aux));
+    }
+
+    vector<int> vetnascimento;
+    stringstream nasc(datanasc);
+    while(getline(nasc, aux, '/')){
+        vetnascimento.push_back(stoi(aux));
+    }
+
+    int idade = veteleicao[2] - vetnascimento[2] - 1;
+    if(vetnascimento[1] < veteleicao[1]){
+        idade += 1;
+    }else if(vetnascimento[1] == veteleicao[1] && vetnascimento[0] < veteleicao[0]){
+        idade += 1;
+    }
+
+    return idade;
+}
+
 map<int, Partido*> Leitura::lePartidos(string arquivo){
     map<int, Partido*> novoMapa;
 
@@ -25,7 +51,7 @@ map<int, Partido*> Leitura::lePartidos(string arquivo){
     return novoMapa;
 }
 
-list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string arquivo){
+list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string arquivo, string dataeleicao){
     list<Politico*> novaLista;
 
     ifstream arquivoPoliticos(arquivo);
@@ -46,7 +72,7 @@ list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string arquivo
             Politico* novoPolitico = new Politico(stoi(vetPalavras[0]), stoi(vetPalavras[1]),
                                                 vetPalavras[2],vetPalavras[3],
                                                 vetPalavras[4],vetPalavras[5].at(0),
-                                                vetPalavras[6],vetPalavras[7], 
+                                                calculaIdade(dataeleicao, vetPalavras[6]),vetPalavras[7], 
                                                 stoi(vetPalavras[8]));
             novaLista.push_back(novoPolitico);
 

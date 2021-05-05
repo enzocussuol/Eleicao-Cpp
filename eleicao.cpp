@@ -2,7 +2,7 @@
 
 Eleicao::Eleicao(Leitura* leitura, char** argv){
     this->partidos = leitura->lePartidos(argv[2]);
-    this->politicos = leitura->lePoliticos(partidos, argv[1]);
+    this->politicos = leitura->lePoliticos(partidos, argv[1], argv[3]);
 }
 
 map<int, Partido*> Eleicao::getPartidos() const{

@@ -1,13 +1,13 @@
 #include "politico.h"
 
-Politico::Politico(const int numero, const int votosNominais,const string &situacao,const string &nome,const string &nomeUrna, const int sexo,const string data,const string &destinoVoto,const int partido){
+Politico::Politico(const int numero, const int votosNominais,const string &situacao,const string &nome,const string &nomeUrna, const int sexo,const int idade,const string &destinoVoto,const int partido){
     this->numero = numero;
     this->votosNominais = votosNominais;
     this->situacao = situacao;
     this->nome = nome;
     this->nomeUrna = nomeUrna;
     this->sexo = sexo;
-    //this->data =  vetcaracteristicas[6];
+    this->idade = idade;
     this->destinoVoto = destinoVoto;
     this->partido = partido;
 }
@@ -36,7 +36,9 @@ int Politico::getSexo() const{
     return this->sexo;
 }
 
-// struct Politico::getData() const;
+int Politico::getIdade() const{ // struct Politico::getData() const;
+    return this->idade;
+}
 
 string Politico::getDestinoVoto() const{
     return this->destinoVoto;

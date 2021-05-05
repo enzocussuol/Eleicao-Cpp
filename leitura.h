@@ -14,7 +14,8 @@
 
     class Leitura{
         public:
-            map<int, Partido*> lePartidos(string);
-            list<Politico*> lePoliticos(map<int, Partido*>, string);
+            int calculaIdade(string dataeleicao, string datanascimento);
+            map<int, Partido*> lePartidos(string arquivo);
+            list<Politico*> lePoliticos(map<int, Partido*> partidos, string arquivo, string dataeleicao);
     };
 #endif

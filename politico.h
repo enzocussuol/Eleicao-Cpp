@@ -19,7 +19,7 @@
             string nome;
             string nomeUrna;
             char sexo;
-            // Data
+            int idade; // Data
             string destinoVoto;
             int partido;
 
@@ -31,7 +31,7 @@
                     const string &nome,
                     const string &nomeUrna,
                     const int sexo,
-                    const string data,
+                    const int idade,
                     const string &destinoVoto,
                     const int partido);
             int getNumero() const;
@@ -40,7 +40,7 @@
             string getNome() const;
             string getNomeUrna() const;
             int getSexo() const;
-            // struct getData() const;
+            int getIdade() const; // struct getData() const;
             string getDestinoVoto() const;
             int getPartido() const;
             void imprimePoliticoOriginal() const;
