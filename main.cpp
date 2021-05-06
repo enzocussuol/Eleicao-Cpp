@@ -8,6 +8,9 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
+    locale localidade("pt_BR.UTF-8");
+    cout.imbue(localidade);
+
     Leitura* leitura;
     Saida* saida;
 
