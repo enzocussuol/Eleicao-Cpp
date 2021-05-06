@@ -14,5 +14,6 @@
         public:
             void geraRelatorio1(int);
             void geraRelatorio2(list<Politico*>, map<int, Partido*>, int);
+            void geraRelatorio3(list<Politico*>, map<int, Partido*>, int);
     };
 #endif

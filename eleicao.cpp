@@ -36,6 +36,7 @@ void Eleicao::ordenaPoliticos(){
 void Eleicao::geraRelatorios(Saida* saida){
     saida->geraRelatorio1(this->numVagas);
     saida->geraRelatorio2(this->politicos, this->partidos, this->numVagas);
+    saida->geraRelatorio3(this->politicos, this->partidos, this->numVagas);
 }
 
 void Eleicao::libera(){

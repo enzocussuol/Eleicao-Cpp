@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
     // cout << "===================================================" << endl;
 
     // for(auto it = politicos.begin(); it != politicos.end(); ++it){
-    //     (*it)->imprimePolitico();
+    //     (*it)->imprimePolitico(partidos);
     // }
 
     eleicao->ordenaPoliticos();

@@ -1,14 +1,12 @@
 #include "leitura.h"
 
 map<int, Partido*> Leitura::lePartidos(string nomeArquivo){
-    cout << nomeArquivo << endl;
-
     map<int, Partido*> novoMapa;
 
     ifstream arquivoPartidos;
 
-    arquivoPartidos.exceptions(ifstream::badbit | ifstream::failbit);
-
+    arquivoPartidos.exceptions();
+    
     try{
         arquivoPartidos.open(nomeArquivo);
 
@@ -17,6 +15,7 @@ map<int, Partido*> Leitura::lePartidos(string nomeArquivo){
         
         getline(arquivoPartidos, linha);
         while(getline(arquivoPartidos, linha)){
+            vetPalavras.clear();
             stringstream aux(linha);
 
             while(getline(aux, palavra, ',')){
@@ -26,7 +25,6 @@ map<int, Partido*> Leitura::lePartidos(string nomeArquivo){
             Partido* novoPartido = new Partido(stoi(vetPalavras[0]), stoi(vetPalavras[1]), vetPalavras[2], vetPalavras[3]);
 
             novoMapa.insert({novoPartido->getNumero(), novoPartido});
-            vetPalavras.clear();
         }
         
         arquivoPartidos.close();
@@ -43,7 +41,7 @@ list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string nomeArq
 
     ifstream arquivoPoliticos;
 
-    arquivoPoliticos.exceptions(ifstream::badbit | ifstream::failbit);
+    arquivoPoliticos.exceptions();
 
     try{
         arquivoPoliticos.open(nomeArquivo);
@@ -53,6 +51,7 @@ list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string nomeArq
 
         getline(arquivoPoliticos, linha);
         while(getline(arquivoPoliticos, linha)){
+            vetPalavras.clear();
             stringstream aux(linha);
 
             while(getline(aux, palavra, ',')){
@@ -70,7 +69,6 @@ list<Politico*> Leitura::lePoliticos(map<int, Partido*> partidos, string nomeArq
 
                 Partido* partido = partidos.find(novoPolitico->getPartido())->second;
                 partido->adicionaPolitico(novoPolitico);
-                vetPalavras.clear();
             }
         }
 
