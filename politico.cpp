@@ -89,7 +89,7 @@ bool cmpVotosNominais(Politico* first, Politico* second){
     if(diferenca > 0) return true;
     else if(diferenca < 0) return false;
     else{
-        // Implementar desempate com a idade dos politicos!
-        return true; // (so pra tirar warning do compilador enquanto n implementa data)
+        if(first->getIdade() > second->getIdade()) return true;
+        return false;
     }
 }

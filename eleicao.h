@@ -15,8 +15,8 @@
     class Eleicao{
         map<int, Partido*> partidos;
         list<Politico*> politicos;
+
         int numVagas;
-        // DATA DA ELEICAO
 
         public:
             Eleicao(Leitura*, char**);
@@ -24,6 +24,7 @@
             list<Politico*> getPoliticos() const;
             void setNumVagas();
             int getNumVagas() const;
+            void processaPartidos();
             void ordenaPoliticos();
             void geraRelatorios(Saida*);
             void libera();

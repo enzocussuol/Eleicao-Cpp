@@ -13,6 +13,9 @@
     class Partido{
         int numero;
         int votosLegenda;
+        int votosTotais;
+        int votosNominais;
+        int numEleitos;
         string nome;
         string sigla;
         list<Politico*> politicos;
@@ -24,6 +27,12 @@
                     const string&, const string&);
             int getNumero() const;
             int getVotosLegenda() const;
+            void setVotosTotais();
+            int getVotosTotais() const;
+            void setVotosNominais();
+            int getVotosNominais() const;
+            void setNumEleitos();
+            int getNumEleitos() const;
             string getNome() const;
             string getSigla() const;
             list<Politico*> getPoliticos() const;
@@ -33,4 +42,6 @@
             void imprimePartido();
             void libera();
     };
+
+    bool cmpVotosTotais(Partido*, Partido*);
 #endif

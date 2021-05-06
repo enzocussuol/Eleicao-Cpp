@@ -29,9 +29,8 @@ int main(int argc, char* argv[]){
     //     (*it)->imprimePolitico(partidos);
     // }
 
-    eleicao->ordenaPoliticos();
-
     eleicao->setNumVagas();
+    eleicao->processaPartidos();
 
     eleicao->geraRelatorios(saida);
 
