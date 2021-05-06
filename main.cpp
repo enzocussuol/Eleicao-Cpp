@@ -1,3 +1,4 @@
+#include <locale>
 #include "politico.h"
 #include "partido.h"
 #include "leitura.h"
@@ -22,7 +23,7 @@ int main(int argc, char* argv[]){
     // cout << "===================================================" << endl;
 
     // for(auto it = politicos.begin(); it != politicos.end(); ++it){
-    //     (*it)->imprimePoliticoOriginal();
+    //     (*it)->imprimePolitico();
     // }
 
     eleicao->ordenaPoliticos();

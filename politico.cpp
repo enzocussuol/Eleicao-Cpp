@@ -1,13 +1,12 @@
 #include "politico.h"
 
-Politico::Politico(const int numero, const int votosNominais,const string &situacao,const string &nome,const string &nomeUrna, const int sexo,const int idade,const string &destinoVoto,const int partido){
+Politico::Politico(const int numero, const int votosNominais, const string &situacao, const string &nome, const string &nomeUrna, const int sexo, const string &destinoVoto, const int partido){
     this->numero = numero;
     this->votosNominais = votosNominais;
     this->situacao = situacao;
     this->nome = nome;
     this->nomeUrna = nomeUrna;
     this->sexo = sexo;
-    this->idade = idade;
     this->destinoVoto = destinoVoto;
     this->partido = partido;
 }
@@ -36,7 +35,32 @@ int Politico::getSexo() const{
     return this->sexo;
 }
 
-int Politico::getIdade() const{ // struct Politico::getData() const;
+void Politico::setIdade(string dataeleicao, string datanasc){
+    string aux;
+
+    vector<int> veteleicao;
+    stringstream elect(dataeleicao);
+    while(getline(elect, aux, '/')){
+        veteleicao.push_back(stoi(aux));
+    }
+
+    vector<int> vetnascimento;
+    stringstream nasc(datanasc);
+    while(getline(nasc, aux, '/')){
+        vetnascimento.push_back(stoi(aux));
+    }
+
+    int idade = veteleicao[2] - vetnascimento[2] - 1;
+    if(vetnascimento[1] < veteleicao[1]){
+        idade += 1;
+    }else if(vetnascimento[1] == veteleicao[1] && vetnascimento[0] < veteleicao[0]){
+        idade += 1;
+    }
+
+    this->idade = idade;
+}
+
+int Politico::getIdade() const{
     return this->idade;
 }
 
@@ -46,18 +70,6 @@ string Politico::getDestinoVoto() const{
 
 int Politico::getPartido() const{
     return this->partido;
-}
-
-void Politico::imprimePoliticoOriginal() const{
-    cout << this->numero << ",";
-    cout << this->votosNominais << ",";
-    cout << this->situacao << ",";
-    cout << this->nome << ",";
-    cout << this->nomeUrna << ",";
-    cout << this->sexo << ",";
-    cout << "DATA" << ",";
-    cout << this->destinoVoto << ",";
-    cout << this->partido << endl;
 }
 
 void Politico::imprimePolitico(map<int, Partido*> partidos) const{

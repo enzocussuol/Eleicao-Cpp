@@ -4,6 +4,7 @@
     class Politico;
 
     #include <iostream>
+    #include <sstream>
     #include <string>
     #include <vector>
     #include <map>
@@ -19,7 +20,7 @@
             string nome;
             string nomeUrna;
             char sexo;
-            int idade; // Data
+            int idade;
             string destinoVoto;
             int partido;
 
@@ -31,7 +32,6 @@
                     const string &nome,
                     const string &nomeUrna,
                     const int sexo,
-                    const int idade,
                     const string &destinoVoto,
                     const int partido);
             int getNumero() const;
@@ -40,7 +40,8 @@
             string getNome() const;
             string getNomeUrna() const;
             int getSexo() const;
-            int getIdade() const; // struct getData() const;
+            void setIdade(string, string);
+            int getIdade() const;
             string getDestinoVoto() const;
             int getPartido() const;
             void imprimePoliticoOriginal() const;
