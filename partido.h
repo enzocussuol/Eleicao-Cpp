@@ -6,6 +6,7 @@
     #include <iostream>
     #include <string>
     #include <list>
+    #include <climits>
     #include "politico.h"
 
     using namespace std;
@@ -36,7 +37,9 @@
             string getNome() const;
             string getSigla() const;
             list<Politico*> getPoliticos() const;
+            void setPrimeiroColocado();
             Politico* getPrimeiroColocado() const;
+            void setUltimoColocado();
             Politico* getUltimoColocado() const;
             void adicionaPolitico(Politico*);
             void imprimePartido();
@@ -44,4 +47,5 @@
     };
 
     bool cmpVotosTotais(Partido*, Partido*);
+    bool cmpPrimeirosColocados(Partido*, Partido*);
 #endif

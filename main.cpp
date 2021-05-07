@@ -16,21 +16,13 @@ int main(int argc, char* argv[]){
 
     Eleicao* eleicao = new Eleicao(leitura, argv);
 
-    // map<int, Partido*> partidos = eleicao->getPartidos();
-    // list<Politico*> politicos = eleicao->getPoliticos();
-
-    // for(auto it = partidos.begin(); it != partidos.end(); ++it){
-    //     it->second->imprimePartido();
-    // }
-
-    // cout << "===================================================" << endl;
-
-    // for(auto it = politicos.begin(); it != politicos.end(); ++it){
-    //     (*it)->imprimePolitico(partidos);
-    // }
-
     eleicao->setNumVagas();
-    eleicao->processaPartidos();
+    
+    eleicao->processaDadosPartidos();
+
+    eleicao->setVotosTotais();
+    eleicao->setVotosNominais();
+    eleicao->setVotosLegenda();
 
     eleicao->geraRelatorios(saida);
 

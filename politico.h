@@ -13,16 +13,15 @@
     using namespace std;
 
     class Politico{
-        private:
-            int numero;
-            int votosNominais;
-            string situacao;
-            string nome;
-            string nomeUrna;
-            char sexo;
-            int idade;
-            string destinoVoto;
-            int partido;
+        int numero;
+        int votosNominais;
+        string situacao;
+        string nome;
+        string nomeUrna;
+        char sexo;
+        int idade;
+        string destinoVoto;
+        int partido;
 
         public:
             Politico(const vector<string> vetcaracteristicas);

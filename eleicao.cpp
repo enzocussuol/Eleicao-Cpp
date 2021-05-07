@@ -29,11 +29,45 @@ int Eleicao::getNumVagas() const{
     return this->numVagas;
 }
 
-void Eleicao::processaPartidos(){
+void Eleicao::setVotosTotais(){
+    this->votosTotais = 0;
+
+    for(auto it = this->partidos.begin(); it != this->partidos.end(); ++it){
+        this->votosTotais += it->second->getVotosTotais();
+    }
+}
+
+int Eleicao::getVotosTotais() const{
+    return this->votosTotais;
+}
+
+void Eleicao::setVotosNominais(){
+    this->votosNominais = 0;
+
+    for(auto it = this->partidos.begin(); it != this->partidos.end(); ++it){
+        this->votosNominais += it->second->getVotosNominais();
+    }
+}
+
+int Eleicao::getVotosNominais() const{
+    return this->votosNominais;
+}
+
+void Eleicao::setVotosLegenda(){
+    this->votosLegenda = this->votosTotais - this->votosNominais;
+}
+
+int Eleicao::getVotosLegenda() const{
+    return this->votosLegenda;
+}
+
+void Eleicao::processaDadosPartidos(){
     for(auto it = this->partidos.begin(); it != this->partidos.end(); ++it){
         it->second->setVotosTotais();
         it->second->setVotosNominais();
         it->second->setNumEleitos();
+        it->second->setPrimeiroColocado();
+        it->second->setUltimoColocado();
     }
 }
 
@@ -41,8 +75,8 @@ void Eleicao::ordenaPoliticos(){
     this->politicos.sort(cmpVotosNominais);
 }
 
-static void ordenaPartidos(list<Partido*>& partidos){
-    partidos.sort(cmpVotosTotais);
+static void ordenaPartidos(list<Partido*>& partidos, bool (*f)(Partido*, Partido*)){
+    partidos.sort(f);
 }
 
 static list<Partido*> preencheLista(map<int, Partido*> partidos){
@@ -66,9 +100,16 @@ void Eleicao::geraRelatorios(Saida* saida){
 
     list<Partido*> partidos = preencheLista(this->partidos);
 
-    ordenaPartidos(partidos);
+    ordenaPartidos(partidos, cmpVotosTotais);
 
     saida->geraRelatorio6(partidos);
+
+    ordenaPartidos(partidos, cmpPrimeirosColocados);
+
+    saida->geraRelatorio7(partidos);
+    saida->geraRelatorio8(this->politicos, this->numVagas);
+    saida->geraRelatorio9(this->politicos, this->numVagas);
+    saida->geraRelatorio10(this->votosTotais, this->votosNominais, this->votosLegenda);
 }
 
 void Eleicao::libera(){

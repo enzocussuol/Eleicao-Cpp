@@ -18,5 +18,9 @@
             void geraRelatorio4(list<Politico*>, map<int, Partido*>, int);
             void geraRelatorio5(list<Politico*>, map<int, Partido*>, int);
             void geraRelatorio6(list<Partido*>);
+            void geraRelatorio7(list<Partido*>);
+            void geraRelatorio8(list<Politico*>, int);
+            void geraRelatorio9(list<Politico*>, int);
+            void geraRelatorio10(int, int, int);
     };
 #endif
