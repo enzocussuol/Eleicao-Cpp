@@ -44,7 +44,7 @@ void Partido::setNumEleitos(){
     this->numEleitos = 0;
 
     for(auto it = this->politicos.begin(); it != this->politicos.end(); ++it){
-        if((*it)->getSituacao().compare("Eleito")) this->numEleitos++;
+        if((*it)->getSituacao().compare("Eleito") == 0) this->numEleitos++;
     }
 }
 
@@ -109,10 +109,18 @@ void Partido::adicionaPolitico(Politico* politico){
 void Partido::imprimePartido(){
     cout << this->sigla << " - ";
     cout << this->numero << ", ";
-    cout << this->votosTotais << " votos (";
-    cout << this->votosNominais << " nominais e ";
-    cout << this->votosLegenda << " de legenda), ";
-    cout << this->numEleitos << " candidatos eleitos" << endl;
+    
+    if(this->votosTotais > 1) cout << to_string(this->votosTotais) << " votos (";
+    else cout << to_string(this->votosTotais) << " voto (";
+    
+    cout << to_string(this->votosNominais);
+    if(this->votosNominais > 1) cout << " nominais e ";
+    else cout << " nominal e ";
+    
+    cout << to_string(this->votosLegenda) << " de legenda), ";
+    
+    if(this->numEleitos > 1) cout << to_string(this->numEleitos) << " candidatos eleitos" << endl;
+    else cout << to_string(this->numEleitos)  << " candidato eleito" << endl;
 }
 
 void Partido::libera(){

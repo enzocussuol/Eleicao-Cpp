@@ -75,8 +75,9 @@ int Politico::getPartido() const{
 void Politico::imprimePolitico(map<int, Partido*> partidos) const{
     cout << this->nome << " / ";
     cout << this->nomeUrna << " (";
-    cout << partidos.find(this->partido)->second->getNome() << ", ";
-    cout << this->votosNominais << " votos)" << endl;
+    cout << partidos.find(this->partido)->second->getSigla() << ", ";
+    if(this->votosNominais > 1) cout << to_string(this->votosNominais) << " votos)" << endl;
+    else cout << to_string(this->votosNominais) << " voto)" << endl;
 }
 
 void Politico::libera(){

@@ -1,4 +1,5 @@
 #include <locale>
+#include <iomanip>
 #include "politico.h"
 #include "partido.h"
 #include "leitura.h"
@@ -10,6 +11,7 @@ using namespace std;
 int main(int argc, char* argv[]){
     locale localidade("pt_BR.UTF-8");
     cout.imbue(localidade);
+    cout << fixed << setprecision(2);
 
     Leitura* leitura;
     Saida* saida;
