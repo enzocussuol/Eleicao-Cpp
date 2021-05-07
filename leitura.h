@@ -7,6 +7,7 @@
     #include <string>
     #include <map>
     #include <list>
+    #include <regex>
     #include "politico.h"
     #include "partido.h"
     

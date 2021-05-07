@@ -21,7 +21,7 @@
         int votosLegenda;
 
         public:
-            Eleicao(Leitura*, char**);
+            Eleicao(Leitura, char**);
             map<int, Partido*> getPartidos() const;
             list<Politico*> getPoliticos() const;
             void setNumVagas();
@@ -34,7 +34,7 @@
             int getVotosLegenda() const;
             void processaDadosPartidos();
             void ordenaPoliticos();
-            void geraRelatorios(Saida*);
+            void geraRelatorios(Saida);
             void libera();
     };
 #endif

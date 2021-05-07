@@ -8,13 +8,13 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]){
+int main(int argc, char** argv){
     locale localidade("pt_BR.UTF-8");
     cout.imbue(localidade);
     cout << fixed << setprecision(2);
 
-    Leitura* leitura;
-    Saida* saida;
+    Leitura leitura;
+    Saida saida;
 
     Eleicao* eleicao = new Eleicao(leitura, argv);
 
@@ -29,6 +29,8 @@ int main(int argc, char* argv[]){
     eleicao->geraRelatorios(saida);
 
     eleicao->libera();
+
+    cout.imbue(locale());
 
     return 0;
 }

@@ -50,7 +50,7 @@ void Saida::geraRelatorio5(list<Politico*> politicos, map<int, Partido*> partido
     
     int i = 0;
     for(auto it = politicos.begin(); it != politicos.end(); ++it){
-        if((*it)->getSituacao().compare("Eleito") == 0 & i >= numVagas){
+        if(((*it)->getSituacao().compare("Eleito") == 0) && (i >= numVagas)){
             cout << i + 1 << " - ";
             (*it)->imprimePolitico(partidos);
         }
@@ -79,29 +79,28 @@ void Saida::geraRelatorio7(list<Partido*> partidos){
         Politico* primeiroColocado = (*it)->getPrimeiroColocado();
         Politico* ultimoColocado = (*it)->getUltimoColocado();
 
-        if(primeiroColocado == NULL | ultimoColocado == NULL) break;
+        if((primeiroColocado == NULL) || (ultimoColocado == NULL)) break;
 
         int votosPrimeiroColocado = primeiroColocado->getVotosNominais();
         int votosUltimoColocado = ultimoColocado->getVotosNominais();
 
-        if(votosPrimeiroColocado > 0 & votosUltimoColocado > 0){
-            cout << i + 1 << " - ";
+        cout << i + 1 << " - ";
 
-            cout << (*it)->getSigla() << " - ";
-            cout << (*it)->getNumero() << ", ";
+        cout << (*it)->getSigla() << " - ";
+        cout << (*it)->getNumero() << ", ";
 
-            cout << primeiroColocado->getNomeUrna() << " (";
-            cout << to_string(primeiroColocado->getNumero()) << ", ";
-            cout << to_string(votosPrimeiroColocado);
-            if(votosPrimeiroColocado > 1) cout << " votos) / ";
-            else cout << " voto) / ";
+        cout << primeiroColocado->getNomeUrna() << " (";
+        cout << to_string(primeiroColocado->getNumero()) << ", ";
+        cout << to_string(votosPrimeiroColocado);
+        if(votosPrimeiroColocado > 1) cout << " votos) / ";
+        else cout << " voto) / ";
 
-            cout << ultimoColocado->getNomeUrna() << " (";
-            cout << to_string(ultimoColocado->getNumero()) << ", ";
-            cout << to_string(votosUltimoColocado);
-            if(votosUltimoColocado > 1) cout << " votos)" << endl;
-            else cout << " voto)" << endl;
-        }
+        cout << ultimoColocado->getNomeUrna() << " (";
+        cout << to_string(ultimoColocado->getNumero()) << ", ";
+        cout << to_string(votosUltimoColocado);
+        if(votosUltimoColocado > 1) cout << " votos)" << endl;
+        else cout << " voto)" << endl;
+
         i++;
     }
     cout << endl;
@@ -151,7 +150,7 @@ void Saida::geraRelatorio8(list<Politico*> politicos, int numVagas){
 }
 
 void Saida::geraRelatorio9(list<Politico*> politicos, int numVagas){
-    cout << "Eleitos por sexo:" << endl;
+    cout << "Eleitos, por sexo:" << endl;
 
     int feminino = 0;
     int masculino = 0;
@@ -187,4 +186,6 @@ void Saida::geraRelatorio10(int votosTotais, int votosNominais, int votosLegenda
 
     cout << "Total de votos nominais:   " << to_string(votosNominais) << " (" << p1 << "%)" << endl;
     cout << "Total de votos de Legenda: " << to_string(votosLegenda) << " (" << p2 << "%)" << endl;
+    
+    cout << endl;
 }

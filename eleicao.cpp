@@ -1,8 +1,8 @@
 #include "eleicao.h"
 
-Eleicao::Eleicao(Leitura* leitura, char** argv){
-    this->partidos = leitura->lePartidos(argv[2]);
-    this->politicos = leitura->lePoliticos(partidos, argv[1], argv[3]);
+Eleicao::Eleicao(Leitura leitura, char** argv){
+    this->partidos = leitura.lePartidos(argv[2]);
+    this->politicos = leitura.lePoliticos(partidos, argv[1], argv[3]);
 }
 
 map<int, Partido*> Eleicao::getPartidos() const{
@@ -89,27 +89,27 @@ static list<Partido*> preencheLista(map<int, Partido*> partidos){
     return novaLista;
 }
 
-void Eleicao::geraRelatorios(Saida* saida){
+void Eleicao::geraRelatorios(Saida saida){
     this->ordenaPoliticos();
 
-    saida->geraRelatorio1(this->numVagas);
-    saida->geraRelatorio2(this->politicos, this->partidos, this->numVagas);
-    saida->geraRelatorio3(this->politicos, this->partidos, this->numVagas);
-    saida->geraRelatorio4(this->politicos, this->partidos, this->numVagas);
-    saida->geraRelatorio5(this->politicos, this->partidos, this->numVagas);
+    saida.geraRelatorio1(this->numVagas);
+    saida.geraRelatorio2(this->politicos, this->partidos, this->numVagas);
+    saida.geraRelatorio3(this->politicos, this->partidos, this->numVagas);
+    saida.geraRelatorio4(this->politicos, this->partidos, this->numVagas);
+    saida.geraRelatorio5(this->politicos, this->partidos, this->numVagas);
 
     list<Partido*> partidos = preencheLista(this->partidos);
 
     ordenaPartidos(partidos, cmpVotosTotais);
 
-    saida->geraRelatorio6(partidos);
+    saida.geraRelatorio6(partidos);
 
     ordenaPartidos(partidos, cmpPrimeirosColocados);
 
-    saida->geraRelatorio7(partidos);
-    saida->geraRelatorio8(this->politicos, this->numVagas);
-    saida->geraRelatorio9(this->politicos, this->numVagas);
-    saida->geraRelatorio10(this->votosTotais, this->votosNominais, this->votosLegenda);
+    saida.geraRelatorio7(partidos);
+    saida.geraRelatorio8(this->politicos, this->numVagas);
+    saida.geraRelatorio9(this->politicos, this->numVagas);
+    saida.geraRelatorio10(this->votosTotais, this->votosNominais, this->votosLegenda);
 }
 
 void Eleicao::libera(){
